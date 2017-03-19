@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8>
+    <title>Angular Bootstrap Datepicker Demo</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="angular-bootstrap-datepicker.css" />
+</head>
+<body data-ng-app="demo">
+    <div>
+        <div data-ng-controller="AppCtrl" style="margin-left:50px">
+
+			   <div style="width:210px;font-size:14px;margin-top:50px">时间频度：
+			   		<select ng-model="selectedFre" ng-change="dateChange()">
+		                   <option ng-repeat="x in frequences" value="{{x.key}}">{{x.value}}</option>
+                      </select>
+                          <ng-date   datefre=date.datefre datadate=date.datadate mindate=date.mindate maxdate=date.maxdate></ng-date>
+               </div>
+ ---------------------------------------------------------------------------------                             
+               <div style="width:210px;font-size:14px;margin-top:50px">时间段频度：
+			   		<select ng-model="selectedRangeFre" ng-change="dateRangeChange()">
+		                   <option ng-repeat="x in frequences" value="{{x.key}}">{{x.value}}</option>
+                      </select>
+                      <ng-date-range mindate=daterange.mindate maxdate=daterange.maxdate  startdate=daterange.startdate enddate=daterange.enddate  datefre=daterange.datefre>
+                       </ng-date-range>
+                </div>
+        </div>
+    </div>
+
+    <script src="jquery.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <script src="angular.js"></script>
+	<script src="JsSimpleDateFormat.js"></script>
+    <script src="bootstrap-datepicker.js" charset="utf-8"></script>
+    <script src="ng-date.js"></script>
+    <script src="ng-date-range.js"></script>
+    <script type="application/javascript">
+        app = angular.module('demo', ['ng-date','ng-date-range']);
+
+        app.controller('AppCtrl', function($scope,$rootScope) {
+		
+			$scope.frequences = [
+                {key : "1", value : "日--day"},
+                {key : "5", value : "周--week"},
+                {key : "2", value : "月--month"},
+				{key : "3", value : "季--quarter"},
+				{key : "4", value : "年--year"},
+				{key : "6", value : "半年--half year"}
+	        ];
+			//$scope.selectedFre = '1';
+			console.log($scope.selectedFre);
+			
+			$scope.dateChange=function(){
+			   $rootScope.$broadcast("changeFre",$scope.selectedFre);
+			}
+			
+			$scope.dateRangeChange=function(){
+			   $rootScope.$broadcast("changeRangeFre",$scope.selectedRangeFre);
+			}
+			 
+            $scope.date={};
+            $scope.date.datadate='20170201';
+			$scope.date.datefre='1';
+            $scope.date.mindate='20170101';
+            $scope.date.maxdate='20170301';
+			
+			$scope.daterange={};
+			$scope.daterange.datefre='1';
+            $scope.daterange.mindate='20170101';
+			$scope.daterange.maxdate='20170301';
+			 $scope.daterange.startdate='20170120';
+            $scope.daterange.enddate='20170220';
+           
+
+        });
+    </script>
+</body>
+</html>
