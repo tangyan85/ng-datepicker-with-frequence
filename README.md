@@ -10,7 +10,7 @@ datepicker and datepicker-range for angular &amp;bootstrap,which you can change 
   
   
 <tr>
-<br>
+<tab>
 <td>
 <tr>  
 第一次上传github，不知道如何写文档与上挂demo，可以将源代码下载到本地进行展现。
