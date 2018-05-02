@@ -1,5 +1,5 @@
 # ng-datepicker-with-frequence
-datepicker and datepicker range for angular &amp;bootstrap,which you can change frequ ence to display date with your frequence。
+datepicker and datepicker-range for angular &amp;bootstrap,which you can change frequence(year\month\quarter\half year\day to display date。
 
 
 <tr>
